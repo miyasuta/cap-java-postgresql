@@ -49,6 +49,17 @@
 			<artifactId>cds-feature-postgresql</artifactId>
 			<scope>runtime</scope>
 		</dependency>
+
+		<dependency>
+			<groupId>com.sap.cds</groupId>
+			<artifactId>cds-starter-cloudfoundry</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -96,13 +107,6 @@
 					</execution>
 
 					<execution>
-						<id>cds.install-cdsdk</id>
-						<goals>
-							<goal>install-cdsdk</goal>
-						</goals>
-					</execution>
-
-					<execution>
 						<id>cds.resolve</id>
 						<goals>
 							<goal>resolve</goal>
@@ -129,6 +133,16 @@
 						</goals>
 						<configuration>
 							<basePackage>cds.gen</basePackage>
+						</configuration>
+					</execution>
+
+					<execution>
+						<id>cds.npm-install</id>
+						<goals>
+							<goal>npm</goal>
+						</goals>
+						<configuration>
+							<arguments>install</arguments>
 						</configuration>
 					</execution>
 				</executions>
