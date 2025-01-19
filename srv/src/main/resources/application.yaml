@@ -1,18 +1,34 @@
+# ---
+# spring:
+#   datasource:
+#     password: postgres
+#     embedded-database-connection: none
+#     driver-class-name: org.postgresql.Driver
+#     url: jdbc:postgresql://localhost:5432/postgres
+#     username: postgres
+#   config:
+#     activate:
+#       on-profile: default
+# cds:
+#   data-source:
+#     auto-config:
+#       enabled: false
 ---
 spring:
-  datasource:
-    password: postgres
-    embedded-database-connection: none
-    driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/postgres
-    username: postgres
-  config:
-    activate:
-      on-profile: default
+  config.activate.on-profile: default
+  sql.init.schema-locations: classpath:schema-h2.sql
 cds:
-  data-source:
-    auto-config:
-      enabled: false
+  data-source.auto-config.enabled: false
+
+---
+spring:
+  config.activate.on-profile: cloud
+  datasource:
+      driver-class-name: org.postgresql.Driver
+      url: jdbc:postgresql://${VCAP_SERVICES.cap-java-postgresql-postgres.credentials.hostname}:${VCAP_SERVICES.cap-java-postgresql-postgres.credentials.port}/${VCAP_SERVICES.cap-java-postgresql-postgres.credentials.dbname}
+      username: ${VCAP_SERVICES.cap-java-postgresql-postgres.credentials.username}
+      password: ${VCAP_SERVICES.cap-java-postgresql-postgres.credentials.password}
+      
 ---
 management:
   endpoint:
