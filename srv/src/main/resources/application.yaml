@@ -28,6 +28,15 @@ spring:
       url: jdbc:postgresql://${VCAP_SERVICES.cap-java-postgresql-postgres.credentials.hostname}:${VCAP_SERVICES.cap-java-postgresql-postgres.credentials.port}/${VCAP_SERVICES.cap-java-postgresql-postgres.credentials.dbname}
       username: ${VCAP_SERVICES.cap-java-postgresql-postgres.credentials.username}
       password: ${VCAP_SERVICES.cap-java-postgresql-postgres.credentials.password}
+
+---
+spring:
+  config.activate.on-profile: hybrid
+  datasource:
+      driver-class-name: org.postgresql.Driver
+      url: jdbc:postgresql://${VCAP_SERVICES.postgresql-db}:${VCAP_SERVICES.cap-java-postgresql-postgres.credentials.port}/${VCAP_SERVICES.cap-java-postgresql-postgres.credentials.dbname}
+      username: ${VCAP_SERVICES.cap-java-postgresql-postgres.credentials.username}
+      password: ${VCAP_SERVICES.cap-java-postgresql-postgres.credentials.password}   
       
 ---
 management:

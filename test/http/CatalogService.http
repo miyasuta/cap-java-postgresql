@@ -1,0 +1,41 @@
+@server = http://localhost:8080
+@auth = Authorization: Basic authenticated:
+
+
+### Books
+# @name Books_GET
+GET {{server}}/odata/v4/CatalogService/Books
+{{auth}}
+
+
+### Books
+# @name Books_POST
+POST {{server}}/odata/v4/CatalogService/Books
+Content-Type: application/json
+{{auth}}
+
+{
+  "ID": 13987600,
+  "title": "title-13987600",
+  "stock": 26
+}
+
+
+### Books
+# @name Books_PATCH
+PATCH {{server}}/odata/v4/CatalogService/Books/13987600
+Content-Type: application/json
+{{auth}}
+
+{
+  "ID": 13987600,
+  "title": "title-13987600",
+  "stock": 26
+}
+
+
+### Books
+# @name Books_DELETE
+DELETE {{server}}/odata/v4/CatalogService/Books/13987600
+Content-Type: application/json
+{{auth}}
