@@ -15,8 +15,8 @@ Content-Type: application/json
 {{auth}}
 
 {
-  "ID": 13987600,
-  "title": "title-13987600",
+  "ID": 13987601,
+  "title": "title-13987601",
   "stock": 26
 }
 

@@ -34,9 +34,9 @@ spring:
   config.activate.on-profile: hybrid
   datasource:
       driver-class-name: org.postgresql.Driver
-      url: jdbc:postgresql://${vcap.services.cap-java-postgresql-postgres.credentials.hostname}:${vcap.services.cap-java-postgresql-postgres.credentials.port}/${vcap.services.cap-java-postgresql-postgres.credentials.dbname}
-      username: ${vcap.services.cap-java-postgresql-postgres.credentials.username}
-      password: ${vcap.services.cap-java-postgresql-postgres.credentials.password} 
+      url: jdbc:postgresql://localhost:63306/${DB_NAME}
+      username: ${DB_USERNAME}
+      password: ${DB_PASSWORD}
       
 ---
 management:
